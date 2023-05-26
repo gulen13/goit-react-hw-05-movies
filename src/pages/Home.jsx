@@ -13,7 +13,6 @@ const Home = () => {
     getAllFilms()
       .then(data => {
         setfilms(data);
-        console.log(data);
       })
       .catch(error => {
         seterror(error.message);
@@ -26,16 +25,13 @@ const Home = () => {
         <h1>Trending Today</h1>
         {error && <p>Sorry. {error} 😭</p>}
         <ul>
-          {films.map(
-            ({ id, title, name }) =>
-              title && (
-                <li key={id}>
-                  <Link to={`movies/${id}`} state={{ from: location }}>
-                    {title}
-                  </Link>
-                </li>
-              )
-          )}
+          {films.map(({ id, title, name }) => (
+            <li key={id}>
+              <Link to={`movies/${id}`} state={{ from: location }}>
+                {title}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     )

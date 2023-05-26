@@ -13,7 +13,6 @@ const MovieDetails = () => {
   useEffect(() => {
     getFilmById(id).then(data => {
       setfilm(data);
-      console.log(data);
     });
   }, [id]);
 

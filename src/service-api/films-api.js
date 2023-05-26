@@ -1,23 +1,30 @@
 import axios from 'axios';
 
-const options = {
+axios.defaults.baseURL = 'https://api.themoviedb.org/3';
+
+const searchParams = new URLSearchParams({
   method: 'GET',
-  params: { language: 'en-US' },
+  api_key: 'd03c893f0ef0ef1618c3413e2cb11b8a',
+  language: 'en-US',
+  include_adult: false,
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMDNjODkzZjBlZjBlZjE2MThjMzQxM2UyY2IxMWI4YSIsInN1YiI6IjY0NzBiMWY1NzcwNzAwMDExOTI0OTJmYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.k5SGub8t1bm16mRBrSE1ihNlbbcDKVgBrNz1pe901dU'
-  }
-};
+  },
+});
 
 
 export const getAllFilms = async () => {
-  const { data } = await axios.request(`https://api.themoviedb.org/3/trending/all/day`, options);
+  const path = '/trending/movie/day';
 
-  return data.results;
+  const response = await axios.get(`${path}?${searchParams}`);
+
+  return response.data.results;
 };
 
 export const getFilmById = async (id) => {
-  const { data } = await axios.request(`https://api.themoviedb.org/3/movie/${id}`, options);
+  const path = `/movie/${id}`;
 
-  return data;
+  const response = await axios.get(`${path}?${searchParams}`);
+
+  return response.data;
 };

@@ -5,7 +5,7 @@ const options = {
   params: { language: 'en-US' },
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMDNjODkzZjBlZjBlZjE2MThjMzQxM2UyY2IxMWI4YSIsInN1YiI6IjY0NzBiMWY1NzcwNzAwMDExOTI0OTJmYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.k5SGub8t1bm16mRBrSE1ihNlbbcDKVgBrNz1pe901dU'
+    Authorization: 'd03c893f0ef0ef1618c3413e2cb11b8a'
   }
 };
 

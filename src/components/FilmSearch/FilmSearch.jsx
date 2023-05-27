@@ -1,9 +1,9 @@
 import SearchForm from 'components/SearchForm/SearchForm';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 const FilmSearch = () => {
-  const [films, setFilms] = useState([]);
+  // const [films, setFilms] = useState([]);
   const [searchParams, setSeachParams] = useSearchParams();
 
   useEffect(() => {

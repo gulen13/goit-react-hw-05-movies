@@ -44,3 +44,11 @@ export const getFilmReviews = async (id) => {
 
   return response.data.results;
 };
+
+export const getFilmByName = async (query) => {
+  const path = '/search/movie';
+
+  const response = await axios.get(`${path}?${searchParams}&query=${query}`);
+
+  return response.data.results;
+};

@@ -20,6 +20,9 @@ const Reviews = () => {
   return (
     <div>
       {error && <p>Sorry, there is no information 😭</p>}
+      {filmReviews?.length === 0 && (
+        <p>Unfortunately, there is no information ....</p>
+      )}
       <ul>
         {filmReviews.map(({ id, author, content }) => (
           <li key={id}>

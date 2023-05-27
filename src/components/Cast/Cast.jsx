@@ -20,6 +20,9 @@ const Reviews = () => {
   return (
     <div>
       {error && <p>Sorry, there is no information 😭</p>}
+      {filmCast?.length === 0 && (
+        <p>Unfortunately, there is no information ....</p>
+      )}
       <ul>
         {filmCast.map(({ id, profile_path, name, character }) => (
           <li key={id}>

@@ -1,7 +1,8 @@
+import FilmSearch from 'components/FilmSearch/FilmSearch';
 import React from 'react';
 
 const Movies = () => {
-  return <div>Movies</div>;
+  return <FilmSearch />;
 };
 
 export default Movies;

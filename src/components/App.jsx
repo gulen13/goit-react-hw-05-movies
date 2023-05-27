@@ -3,6 +3,8 @@ import SharedLayout from './SharedLayout';
 import Home from '../pages/Home';
 import Movies from '../pages/Movies';
 import MovieDetails from '../pages/MovieDetails';
+import Cast from './Cast/Cast';
+import Reviews from './Reviews/Reviews';
 
 const App = () => {
   return (
@@ -10,7 +12,10 @@ const App = () => {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />}></Route>
         <Route path="movies" element={<Movies />}></Route>
-        <Route path="movies/:id" element={<MovieDetails />}></Route>
+        <Route path="movies/:id" element={<MovieDetails />}>
+          <Route path="cast" element={<Cast />}></Route>
+          <Route path="reviews" element={<Reviews />}></Route>
+        </Route>
         <Route path="*" element={'Sorry, there is no adress like this.'} />
       </Route>
     </Routes>

@@ -31,7 +31,7 @@ const MovieDetails = () => {
       <div>
         <Link to={backLinkHref}>Go Back</Link>
         <div>
-          <img src={poster} alt={film.title} />
+          <img src={poster} alt={film.title} width="300" />
           <h1>
             {film.title}({film.release_date})
           </h1>
@@ -45,14 +45,10 @@ const MovieDetails = () => {
         <p>Additional information</p>
         <ul>
           <li>
-            <Link to="cast" state={backLinkHref}>
-              Cast
-            </Link>
+            <Link to="cast">Cast</Link>
           </li>
           <li>
-            <Link to="reviews" state={backLinkHref}>
-              Reviews
-            </Link>
+            <Link to="reviews">Reviews</Link>
           </li>
         </ul>
         <hr />

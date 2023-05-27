@@ -25,7 +25,7 @@ const Home = () => {
         <h1>Trending Today</h1>
         {error && <p>Sorry. {error} 😭</p>}
         <ul>
-          {films.map(({ id, title, name }) => (
+          {films.map(({ id, title }) => (
             <li key={id}>
               <Link to={`movies/${id}`} state={{ from: location }}>
                 {title}

@@ -28,3 +28,19 @@ export const getFilmById = async (id) => {
 
   return response.data;
 };
+
+export const getFilmCast = async (id) => {
+  const path = `/movie/${id}/credits`;
+
+  const response = await axios.get(`${path}?${searchParams}`);
+
+  return response.data.cast;
+};
+
+export const getFilmReviews = async (id) => {
+  const path = `/movie/${id}/reviews`;
+
+  const response = await axios.get(`${path}?${searchParams}`);
+
+  return response.data.results;
+};

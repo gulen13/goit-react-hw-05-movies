@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const MovieList = ({ films, error, location }) => {
+const MovieList = ({ films }) => {
+  const location = useLocation();
+
   return (
     <>
-      {error && <p>Sorry. {error} 😭</p>}
-      {location.pathname === '/' ? <h1>Trending Today</h1> : ''}
       <ul>
         {films.map(({ id, title }) => (
           <li key={id}>
@@ -25,8 +25,6 @@ const MovieList = ({ films, error, location }) => {
 
 MovieList.protoTypes = {
   films: PropTypes.array.isRequired,
-  location: PropTypes.object.isRequired,
-  error: PropTypes.string.isRequired,
 };
 
 export default MovieList;

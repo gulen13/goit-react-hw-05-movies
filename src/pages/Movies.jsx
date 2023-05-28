@@ -1,6 +1,6 @@
 import SearchForm from 'components/SearchForm/SearchForm';
 import React, { useEffect, useState } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { getFilmByName } from 'service-api/films-api';
 import MovieList from 'components/MovieList/MovieList';
 
@@ -8,8 +8,6 @@ const Movies = () => {
   const [films, setFilms] = useState([]);
   const [error, seterror] = useState('');
   const [searchParams, setSeachParams] = useSearchParams();
-
-  const location = useLocation();
 
   useEffect(() => {
     const film = searchParams.get('film') ?? '';
@@ -32,7 +30,8 @@ const Movies = () => {
   return (
     <div>
       <SearchForm onSubmit={onSubmit} />
-      <MovieList films={films} error={error} location={location} />
+      <MovieList films={films} />
+      {error && <p>Sorry. {error} 😭</p>}
     </div>
   );
 };

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { getAllFilms } from 'service-api/films-api';
+import MovieList from 'components/MovieList/MovieList';
 
 const Home = () => {
-  const [films, setfilms] = useState([]);
+  const [films, setfilms] = useState(null);
   const [error, seterror] = useState('');
 
   const location = useLocation();
@@ -22,17 +23,7 @@ const Home = () => {
   return (
     films && (
       <div>
-        <h1>Trending Today</h1>
-        {error && <p>Sorry. {error} 😭</p>}
-        <ul>
-          {films.map(({ id, title }) => (
-            <li key={id}>
-              <Link to={`movies/${id}`} state={{ from: location }}>
-                {title}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <MovieList films={films} error={error} location={location} />
       </div>
     )
   );

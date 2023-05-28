@@ -1,7 +1,8 @@
 import SearchForm from 'components/SearchForm/SearchForm';
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { getFilmByName } from 'service-api/films-api';
+import MovieList from 'components/MovieList/MovieList';
 
 const Movies = () => {
   const [films, setFilms] = useState([]);
@@ -31,16 +32,7 @@ const Movies = () => {
   return (
     <div>
       <SearchForm onSubmit={onSubmit} />
-      {error && <p>Sorry. {error} 😭</p>}
-      <ul>
-        {films.map(({ id, title }) => (
-          <li key={id}>
-            <Link to={`${id}`} state={{ from: location }}>
-              {title}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <MovieList films={films} error={error} location={location} />
     </div>
   );
 };

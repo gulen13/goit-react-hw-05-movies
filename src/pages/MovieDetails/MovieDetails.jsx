@@ -4,12 +4,12 @@ import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getFilmById } from 'service-api/films-api';
 import { Div, Div2, LinkStl, P } from './MovieDetails.styled';
 
-const MovieDetails = () => {
-  const [film, setfilm] = useState({});
-  const { id } = useParams();
+const defaultImg = 'https://dummyimage.com/350x400/aba46f/0011ff.jpg&text=Film';
+const defaultGenresTxt = 'No information about genres';
 
-  let poster = '';
-  let genres = '';
+const MovieDetails = () => {
+  const [film, setfilm] = useState(null);
+  const { id } = useParams();
 
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
@@ -20,21 +20,20 @@ const MovieDetails = () => {
     });
   }, [id]);
 
-  if (film) {
-    poster = film.poster_path
-      ? `https://image.tmdb.org/t/p/w500/${film.poster_path}`
-      : 'https://dummyimage.com/150x200/aba46f/0011ff.jpg&text=Film';
-    genres = film.genres
-      ? film.genres.map(film => film.name).join(', ')
-      : 'No information about genres';
-  }
-
   return (
     film && (
       <div>
         <LinkStl to={backLinkHref}>Go Back</LinkStl>
         <Div>
-          <img src={poster} alt={film.title} width="300" />
+          <img
+            src={
+              film.poster_path
+                ? `https://image.tmdb.org/t/p/w500/${film.poster_path}`
+                : defaultImg
+            }
+            alt={film.title}
+            width="300"
+          />
           <Div2>
             <h1>
               {film.title} (
@@ -47,7 +46,11 @@ const MovieDetails = () => {
             <P>Overview</P>
             <p>{film.overview}</p>
             <P>Genres</P>
-            <p>{genres}</p>
+            <p>
+              {film.genres
+                ? film.genres.map(film => film.name).join(', ')
+                : defaultGenresTxt}
+            </p>
           </Div2>
         </Div>
         <hr />

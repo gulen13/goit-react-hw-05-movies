@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getFilmReviews } from 'service-api/films-api';
 
 const Reviews = () => {
-  const [filmReviews, setfilmReviews] = useState([]);
+  const [filmReviews, setfilmReviews] = useState(null);
   const [error, seterror] = useState('');
   const { id } = useParams();
 
@@ -23,14 +23,16 @@ const Reviews = () => {
       {filmReviews?.length === 0 && (
         <p>Unfortunately, there is no information ....</p>
       )}
-      <ul>
-        {filmReviews.map(({ id, author, content }) => (
-          <li key={id}>
-            <p>Aurhor: {author}</p>
-            <p>{content}</p>
-          </li>
-        ))}
-      </ul>
+      {filmReviews && (
+        <ul>
+          {filmReviews.map(({ id, author, content }) => (
+            <li key={id}>
+              <p>Aurhor: {author}</p>
+              <p>{content}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

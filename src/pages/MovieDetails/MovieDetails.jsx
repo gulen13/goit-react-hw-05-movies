@@ -1,8 +1,15 @@
 import React, { useState, Suspense } from 'react';
 import { useEffect } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { getFilmById } from 'service-api/films-api';
-import { Div, Div2, LinkStl, P } from './MovieDetails.styled';
+import {
+  Div,
+  Div2,
+  LINKCastRew,
+  LinkStl,
+  P,
+  StateList,
+} from './MovieDetails.styled';
 
 const defaultImg = 'https://dummyimage.com/350x400/aba46f/0011ff.jpg&text=Film';
 const defaultGenresTxt = 'No information about genres';
@@ -55,18 +62,18 @@ const MovieDetails = () => {
         </Div>
         <hr />
         <p>Additional information</p>
-        <ul>
+        <StateList>
           <li>
-            <Link to="cast" state={{ from: backLinkHref }}>
+            <LINKCastRew to="cast" state={{ from: backLinkHref }}>
               Cast
-            </Link>
+            </LINKCastRew>
           </li>
           <li>
-            <Link to="reviews" state={{ from: backLinkHref }}>
+            <LINKCastRew to="reviews" state={{ from: backLinkHref }}>
               Reviews
-            </Link>
+            </LINKCastRew>
           </li>
-        </ul>
+        </StateList>
         <hr />
         <Suspense fallback={<div>Loading page...</div>}>
           <Outlet />

@@ -30,3 +30,21 @@ export const P = styled.p`
   font-size: large;
   font-weight: 700;
 `;
+
+export const StateList = styled.ul`
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+`;
+
+export const LINKCastRew = styled(Link)`
+  text-decoration: none;
+  width: 100px;
+  font-size: large;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #83b19d;
+  cursor: pointer;
+  color: #080908;
+`;

@@ -1,3 +1,5 @@
+import { LiCast } from 'components/MovieList/MovieList.styled';
+import { StateList } from 'pages/MovieDetails/MovieDetails.styled';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getFilmCast } from 'service-api/films-api';
@@ -24,23 +26,23 @@ const Reviews = () => {
         <p>Unfortunately, there is no information ....</p>
       )}
       {filmCast && (
-        <ul>
+        <StateList>
           {filmCast.map(({ id, profile_path, name, character }) => (
-            <li key={id}>
+            <LiCast key={id}>
               <img
                 src={
                   profile_path
                     ? `https://image.tmdb.org/t/p/w500/${profile_path}`
-                    : 'https://dummyimage.com/150x200/aba46f/0011ff.jpg&text=Actor'
+                    : 'https://dummyimage.com/190x285/aba46f/0011ff.jpg&text=Actor'
                 }
                 alt={name}
-                width="150"
+                width="190"
               />
               <p>{name}</p>
               <p>Character : {character}</p>
-            </li>
+            </LiCast>
           ))}
-        </ul>
+        </StateList>
       )}
     </div>
   );

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getFilmCast } from 'service-api/films-api';
 
-const Reviews = () => {
+const Cast = () => {
   const [filmCast, setfilmCast] = useState(null);
   const [error, seterror] = useState('');
   const { id } = useParams();
@@ -48,4 +48,4 @@ const Reviews = () => {
   );
 };
 
-export default Reviews;
+export default Cast;
